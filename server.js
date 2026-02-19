@@ -361,7 +361,7 @@ app.post('/api/contact', emailLimiter, async (req, res) => {
 // QR Codes page
 app.get('/qr', async (req, res) => {
   try {
-    const baseUrl = req.query.base || BASE_URL;
+    const baseUrl = 'https://illumibot-waitlist--illumibot-waitlist.us-east4.hosted.app';
     const [waitlistQR, contactQR] = await Promise.all([
       QRCode.toDataURL(`${baseUrl}/`, { width: 300, margin: 2, color: { dark: '#10B981', light: '#000000' } }),
       QRCode.toDataURL(`${baseUrl}/contact`, { width: 300, margin: 2, color: { dark: '#10B981', light: '#000000' } })
