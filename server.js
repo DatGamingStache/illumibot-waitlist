@@ -16,7 +16,7 @@ const db = admin.apps.length ? admin.firestore() : null;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+const BASE_URL = process.env.BASE_URL || 'https://illumibot-waitlist--illumibot-waitlist.us-east4.hosted.app';
 const DATA_FILE = path.join(__dirname, 'data', 'waitlist.json');
 
 // Ensure data directory
