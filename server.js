@@ -167,7 +167,7 @@ function htmlPage(title, bodyContent) {
 </head>
 <body>
   ${bodyContent}
-  <div class="footer">© 2026 illumibot.ai — Transworld Trade Show</div>
+  <div class="footer">© 2026 illumibot.ai</div>
 </body>
 </html>`;
 }
@@ -351,6 +351,17 @@ app.post('/api/contact', emailLimiter, async (req, res) => {
           <p style="font-size:12px;color:#555;text-align:center;">illumibot.ai — The 1st AI Personalized Projection™ App</p>
         </div>`
     });
+    // Log contact email to Firestore
+    if (db) {
+      try {
+        await db.collection('contact_submissions').add({
+          email,
+          submitted_at: admin.firestore.FieldValue.serverTimestamp()
+        });
+      } catch (fbErr) {
+        console.error('Firestore contact log error:', fbErr);
+      }
+    }
     res.json({ success: true });
   } catch (err) {
     console.error('Email error:', err);
@@ -369,7 +380,7 @@ app.get('/qr', async (req, res) => {
     res.send(htmlPage('QR Codes', `
     <div style="padding:48px 24px;text-align:center;">
       <img src="/img/logo.png" alt="illumibot" class="logo">
-      <h1 style="margin-bottom:48px;">Trade Show <span class="accent">QR Codes</span></h1>
+      <h1 style="margin-bottom:48px;"><span class="accent">QR Codes</span></h1>
       <div class="qr-grid">
         <div class="qr-card">
           <img src="${waitlistQR}" alt="Waitlist QR" width="300" height="300">
