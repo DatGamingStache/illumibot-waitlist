@@ -1,0 +1,7 @@
+runConfig:
+  runtime: nodejs22
+  concurrency: 80
+
+env:
+  - variable: BASE_URL
+    value: https://illumibot-waitlist--illumibot-waitlist.us-east4.hosted.app

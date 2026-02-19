@@ -7,5 +7,14 @@
     "phone": "6013254552",
     "notes": "i like potatoes",
     "timestamp": "2026-02-19T07:20:43.400Z"
+  },
+  {
+    "company": "Test Co",
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "test@test.com",
+    "phone": "555-1234",
+    "notes": "",
+    "timestamp": "2026-02-19T08:53:53.226Z"
   }
 ]

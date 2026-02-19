@@ -4,6 +4,15 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const QRCode = require('qrcode');
 const rateLimit = require('express-rate-limit');
+const admin = require('firebase-admin');
+
+// Init Firebase Admin (uses default credentials on App Hosting)
+try {
+  admin.initializeApp();
+} catch (e) {
+  // Already initialized or no credentials (local dev)
+}
+const db = admin.apps.length ? admin.firestore() : null;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -298,13 +307,19 @@ app.post('/api/waitlist', formLimiter, (req, res) => {
     if (!isValidEmail(email)) {
       return res.status(400).json({ error: 'Invalid email address.' });
     }
-    const entries = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    entries.push({
+    const entry = {
       company, firstName, lastName, email, phone,
       notes: notes || '',
       timestamp: new Date().toISOString()
-    });
+    };
+    // Save to local file
+    const entries = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+    entries.push(entry);
     fs.writeFileSync(DATA_FILE, JSON.stringify(entries, null, 2));
+    // Save to Firestore (if available)
+    if (db) {
+      db.collection('waitlist').add(entry).catch(e => console.error('Firestore write error:', e));
+    }
     res.json({ success: true });
   } catch (err) {
     console.error('Waitlist error:', err);
