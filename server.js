@@ -374,12 +374,10 @@ app.get('/qr', async (req, res) => {
         <div class="qr-card">
           <img src="${waitlistQR}" alt="Waitlist QR" width="300" height="300">
           <h3>Installer Waitlist</h3>
-          <p>${baseUrl}/</p>
         </div>
         <div class="qr-card">
           <img src="${contactQR}" alt="Contact QR" width="300" height="300">
           <h3>Ross's Contact Info</h3>
-          <p>${baseUrl}/contact</p>
         </div>
       </div>
     </div>`));
