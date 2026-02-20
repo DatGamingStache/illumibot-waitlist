@@ -99,7 +99,7 @@ function htmlPage(title, bodyContent) {
       margin-bottom: 32px;
       line-height: 1.3;
     }
-    .accent { color: #10B981; }
+    .accent { color: #17FB15; }
     label {
       display: block;
       font-size: 0.85rem;
@@ -120,14 +120,14 @@ function htmlPage(title, bodyContent) {
       transition: border-color 0.2s;
       outline: none;
     }
-    input:focus, textarea:focus { border-color: #10B981; }
+    input:focus, textarea:focus { border-color: #17FB15; }
     textarea { resize: vertical; min-height: 80px; }
     .btn {
       display: block;
       width: 100%;
       margin-top: 28px;
       padding: 16px;
-      background: #10B981;
+      background: #17FB15;
       color: #000;
       font-family: 'Sora', sans-serif;
       font-size: 1rem;
@@ -148,7 +148,7 @@ function htmlPage(title, bodyContent) {
     .success-card .check {
       width: 64px; height: 64px;
       margin: 0 auto 24px;
-      background: #10B981;
+      background: #17FB15;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 32px;
@@ -342,11 +342,11 @@ app.post('/api/contact', emailLimiter, async (req, res) => {
       html: `
         <div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:32px;background:#000;color:#fff;border-radius:12px;">
           <p style="font-size:16px;color:#ccc;">Thanks for connecting with me! Here is my contact info:</p>
-          <div style="margin:24px 0;padding:20px;background:#111;border-radius:8px;border-left:3px solid #10B981;">
+          <div style="margin:24px 0;padding:20px;background:#111;border-radius:8px;border-left:3px solid #17FB15;">
             <p style="font-size:18px;font-weight:bold;margin:0 0 4px;">Ross Arroyo</p>
-            <p style="color:#10B981;margin:0 0 12px;">Founder / CEO, Illumibot.ai</p>
-            <p style="margin:0;color:#ccc;">📱 <a href="tel:6014344099" style="color:#10B981;">601-434-4099</a></p>
-            <p style="margin:4px 0 0;color:#ccc;">✉️ <a href="mailto:ross@illumibot.ai" style="color:#10B981;">ross@illumibot.ai</a></p>
+            <p style="color:#17FB15;margin:0 0 12px;">Founder / CEO, Illumibot.ai</p>
+            <p style="margin:0;color:#ccc;">📱 <a href="tel:6014344099" style="color:#17FB15;">601-434-4099</a></p>
+            <p style="margin:4px 0 0;color:#ccc;">✉️ <a href="mailto:ross@illumibot.ai" style="color:#17FB15;">ross@illumibot.ai</a></p>
           </div>
           <p style="font-size:12px;color:#555;text-align:center;">illumibot.ai — The 1st AI Personalized Projection™ App</p>
         </div>`
@@ -374,8 +374,8 @@ app.get('/qr', async (req, res) => {
   try {
     const baseUrl = 'https://illumibot-waitlist--illumibot-waitlist.us-east4.hosted.app';
     const [waitlistQR, contactQR] = await Promise.all([
-      QRCode.toDataURL(`${baseUrl}/`, { width: 300, margin: 2, color: { dark: '#10B981', light: '#000000' } }),
-      QRCode.toDataURL(`${baseUrl}/contact`, { width: 300, margin: 2, color: { dark: '#10B981', light: '#000000' } })
+      QRCode.toDataURL(`${baseUrl}/`, { width: 300, margin: 2, color: { dark: '#17FB15', light: '#000000' } }),
+      QRCode.toDataURL(`${baseUrl}/contact`, { width: 300, margin: 2, color: { dark: '#17FB15', light: '#000000' } })
     ]);
     res.send(htmlPage('QR Codes', `
     <div style="padding:48px 24px;text-align:center;">
